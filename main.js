@@ -64,22 +64,6 @@ const dataRovesciata = (dateString) => {
     const [anno, mese, giorno] = dateString.split("-");
     return `${giorno}/${mese}/${anno}`;
 };
-// bonus delle lettere al posto dell immagine 
-// funzione per riconoscere le lettere da usare 
-const iniziali = (name) =>{
-    const parteNome = name.split(" ");
-    return parteNome.map(part => part.charAt(0)).join("");
-};
-
-// funzione per l'assenza dell'immagine prifilo
-const immagineProfilo = (author) => {
-    if (author.image) {
-        return `<img class="profile-pic" src="${author.image}" alt="${author.name}">`;
-    }else{
-        const inizialiImage = iniziali(author.name);
-        return `<div class=fallback-initials">${iniziali}</div>`
-    }
-};
 
 posts.forEach(post => {
     const postElement = document.createElement("div");
@@ -91,7 +75,7 @@ posts.forEach(post => {
         <div class="post__header">
             <div class="post-meta">                    
                 <div class="post-meta__icon">
-                    ${immagineProfilo(post.author)}
+                    <img class="profile-pic" src="${post.author.image}" alt="${post.author.name}">                    
                 </div>
             <div class="post-meta__data">
                     <div class="post-meta__author">${post.author.name}</div>
@@ -143,3 +127,19 @@ posts.forEach(post => {
 
 });
 
+// bonus delle lettere al posto dell immagine 
+// funzione per riconoscere le lettere da usare 
+const iniziali = (name) =>{
+    const parteNome = name.split(" ");
+    return parteNome.map(part => part.charAt(0)).join("");
+};
+
+// funzione per l'assenza dell'immagine prifilo
+const immagineProfilo = (author) => {
+    if (author.image) {
+        return `<img class="profile-pic" src="${author.image}" alt="${author.name}">`;
+    }else{
+        const inizialiImage = iniziali(author.name);
+        return `<div class=fallback-initials">${iniziali}</div>`
+    }
+};
