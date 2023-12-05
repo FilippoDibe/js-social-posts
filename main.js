@@ -60,11 +60,15 @@ const container = document.getElementById("container");
 
 const likePostIds = []
 
+const dataRovesciata = (dateString) => {
+    const [anno, mese, giorno] = dateString.split("-");
+    return `${giorno}/${mese}/${anno}`;
+};
+
 posts.forEach(post => {
     const postElement = document.createElement("div");
     postElement.classList.add("post");
 
-    function dataInItaliano
 
     postElement.innerHTML = 
     `
@@ -75,7 +79,7 @@ posts.forEach(post => {
                 </div>
             <div class="post-meta__data">
                     <div class="post-meta__author">${post.author.name}</div>
-                    <div class="post-meta__time">${post.created}</div>
+                    <div class="post-meta__time">${dataRovesciata(post.created)}</div>
             </div>                    
             </div>
         </div>
