@@ -58,9 +58,13 @@ const posts = [
 
 const container = document.getElementById("container");
 
+const likePostIds = []
+
 posts.forEach(post => {
     const postElement = document.createElement("div");
     postElement.classList.add("post");
+
+    function dataInItaliano
 
     postElement.innerHTML = 
     `
@@ -106,9 +110,14 @@ posts.forEach(post => {
             post.likes --;
         }else{
             // mette il like 
+            bottoneLike.classList.add("liked");
+            likePostIds.push(post.id);
+            post.likes ++;
         }
+        likeCounter.textContent = post.likes;
+
         
-    })
+    });
 
     container.appendChild(postElement);
 
