@@ -93,6 +93,23 @@ posts.forEach(post => {
             </div> 
         </div> 
     `;
+    const bottoneLike = postElement.querySelector('.js-like-button')
+    const likeCounter = postElement.querySelector(".js-likes-counter")
+
+    bottoneLike.addEventListener('click', () => {
+        // controllo dello stato del like 
+        const likeSi = likePostIds.includes(post.id);
+        if (likeSi){
+            // togle il like 
+            bottoneLike.classList.remove('liked');
+            likePostIds.splice(likePostIds.indexOf(post.id), 1);
+            post.likes --;
+        }else{
+            // mette il like 
+        }
+        
+    })
+
     container.appendChild(postElement);
 
 });
